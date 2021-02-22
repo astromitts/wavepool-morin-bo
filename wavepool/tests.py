@@ -123,7 +123,7 @@ class SiteFrontPage(TestBase):
         front_page_html = BeautifulSoup(front_page.content, 'html.parser')
 
         cover_story_div = front_page_html.find('div', {'id': 'coverstory'})
-        cover_story_id = int(cover_story_div['data-story-id'])
+        cover_story_id = int(cover_story_div['data-newspost-id'])
 
         self.assertEqual(cover_story_id, cover_story.pk)
 
@@ -146,17 +146,17 @@ class SiteFrontPage(TestBase):
         top_story_1 = front_page_html.find(
             'div', {'class': 'topstory', 'data-top-story-placement': '1', }
         )
-        top_story_1_id = int(top_story_1['data-story-id'])
+        top_story_1_id = int(top_story_1['data-newspost-id'])
 
         top_story_2 = front_page_html.find(
             'div', {'class': 'topstory', 'data-top-story-placement': '2', }
         )
-        top_story_2_id = int(top_story_2['data-story-id'])
+        top_story_2_id = int(top_story_2['data-newspost-id'])
 
         top_story_3 = front_page_html.find(
             'div', {'class': 'topstory', 'data-top-story-placement': '3', }
         )
-        top_story_3_id = int(top_story_3['data-story-id'])
+        top_story_3_id = int(top_story_3['data-newspost-id'])
 
         self.assertEqual(top_story_1_id, top_stories[0].pk)
         self.assertEqual(top_story_2_id, top_stories[1].pk)
